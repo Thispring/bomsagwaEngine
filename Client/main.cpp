@@ -3,16 +3,43 @@
 #include "../Engine/Core/Header/CoreSharedPCH.h"
 #include <iostream>
 
+using namespace bomsagwa;
+
 int main()
 {
-    int32 value = 100;
+    {
+        /*
+        * My String Class Test Local
+        */
+       
+        String name1("Kim");
+        String name2("Kim");
+        String name3("John");
+       
+        if (name1 == name2)
+            std::cout << "Equal Name!" << std::endl;
+        else
+            std::cout << "Not Equal Name!" << std::endl;
+       
+        std::cout << name1.Length() << std::endl;
+        std::cout << name3.Length() << std::endl;
+       
+        String str;
 
-    std::cout << "Before: " << value << std::endl;
+        ANSICHAR ch[10] = "Hello";
+        std::cout << ch << std::endl;
+        
+        str.Reverse(ch);
+        std::cout << ch << std::endl;
 
-    bomsagwa::String str;
-    value = str.strlen("Hello World! Goodbye World?");
 
-    std::cout << "After:" << value << std::endl;
+    }
+
+    {
+
+        //Vector2 pos;
+    }
+
 
     return 0;
 }

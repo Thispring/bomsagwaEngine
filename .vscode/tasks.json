@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clang++ build",
+            "command": "clang++ -std=c++17 -g -I ${workspaceFolder}/include $(find ${workspaceFolder} -name \"*.cpp\") -o ${workspaceFolder}/main",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "clang++로 프로젝트 내 모든 .cpp 파일을 자동으로 찾아 빌드"
+        }
+    ]
+}
