@@ -1,0 +1,21 @@
+BasedOnStyle: Microsoft
+BreakBeforeBraces: Allman
+IndentWidth: 4
+TabWidth: 4
+UseTab: ForIndentation
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterStruct: true
+  BeforeElse: true
+PointerAlignment: Left
+SpaceBeforeParens: ControlStatements
+ColumnLimit: 0
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
