@@ -6,6 +6,7 @@
 
 namespace bomsagwa
 {
+
 String::String()
     : mBaseBuf(nullptr), mShortBuf(), mLongBuf(nullptr),
       mLength(0), mCapacity(sizeof(mShortBuf))
@@ -25,11 +26,7 @@ String::String(const ANSICHAR* str)
 	int32 length = 0;
 	int32 idx = 0;
 
-	/*
-	 * NOTE(26-09-03):
-	 * str[idx] ^ 0 는 str[idx] != '\0'와 결과가 같다.
-	 */
-	while (str[idx] ^ 0)
+	while (str[idx] != '\0')
 	{
 		++idx;
 		++length;
@@ -40,7 +37,7 @@ String::String(const ANSICHAR* str)
 
 	if (length < 256)
 	{
-		while (str[idx] ^ 0)
+		while (str[idx] != '\0')
 		{
 			mShortBuf[idx] = str[idx];
 			++idx;
@@ -55,12 +52,12 @@ String::String(const ANSICHAR* str)
 		// Length 길이에 따라 256을 몇번 곱할지 정하기
 		while (mLength > mCapacity)
 		{
-			mCapacity += 256;
+			mCapacity += DEFAULT_STRING_CAPACITY + 1;
 		}
 
 		mLongBuf = (ANSICHAR*)malloc(sizeof(ANSICHAR) * (mCapacity));
 
-		while (str[idx] ^ 0)
+		while (str[idx] != '\0')
 		{
 			mShortBuf[idx] = str[idx];
 			++idx;
@@ -84,11 +81,11 @@ void String::Reverse(ANSICHAR* str)
 	if (str == nullptr)
 		return;
 
-	ANSICHAR temp[255] = {};
+	ANSICHAR temp[DEFAULT_STRING_CAPACITY] = {};
 	int32    idx = 0;
 	int32    length = 0;
 
-	while (str[idx] ^ 0)
+	while (str[idx] != '\0')
 	{
 		temp[idx] = str[idx];
 		++idx;
@@ -97,7 +94,7 @@ void String::Reverse(ANSICHAR* str)
 
 	idx = 0;
 
-	while (length ^ 0)
+	while (length != '\0')
 	{
 		--length;
 		str[idx] = temp[length];
@@ -110,10 +107,44 @@ uint64 String::Length() const
 	return mLength;
 }
 
-void String::strcpy(ANSICHAR* dest, const ANSICHAR* src)
+const ANSICHAR* String::c_str() const
 {
+	return mBaseBuf;
+}
+
+ANSICHAR* String::strcpy(ANSICHAR* dest, const ANSICHAR* src)
+{
+	/*
+	NOTE(26-09-07):
+	Q:
+	"복사 기능만 필요하다면 왜 C 표준의 strcpy는 void가 아니라 굳이 char*를 반환하도록 설계했을까?"
+	A:
+	C에서 함수 호출을 표현식(expression)으로 연결하고, 작업 대상인 dest를 반환해서 후속 연산에 사용할 수 있게 하는 설계 관습으로 이해하기
+	*/
 	if (dest == nullptr || src == nullptr)
-		return;
+		return nullptr;
+
+	int32 idx = 0;
+
+	while (dest[idx] != '\0' && src[idx] != '\0')
+	{
+		dest[idx] = src[idx];
+		++idx;
+	}
+
+	return dest;
+}
+
+ANSICHAR* String::strncpy(ANSICHAR* dest, const ANSICHAR* src, int32 count)
+{
+
+	return nullptr;
+}
+
+ANSICHAR* String::strcat(ANSICHAR* dest, const ANSICHAR* src)
+{
+
+	return nullptr;
 }
 
 int64 String::strlen(const ANSICHAR* str)
@@ -124,7 +155,7 @@ int64 String::strlen(const ANSICHAR* str)
 	int32 count = 0;
 	int32 idx = 0;
 
-	while (str[idx] ^ 0)
+	while (str[idx] != '\0')
 	{
 		++count;
 		++idx;

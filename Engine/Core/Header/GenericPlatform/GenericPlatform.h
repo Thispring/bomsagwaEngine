@@ -34,3 +34,5 @@ typedef char                ANSICHAR;
 
 // A wide character. In-memory only. ?-bit fixed-width representation of the platform's natural wide character set. Could be different sizes on different platforms.
 // typedef wchar_t				WIDECHAR;
+
+// clang-format on

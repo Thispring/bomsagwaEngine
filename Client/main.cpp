@@ -49,21 +49,26 @@ int main()
 		std::cout << name1.Length() << std::endl;
 		std::cout << name3.Length() << std::endl;
 
-		String str;
+		std::cout << String::strlen("Hello") << std::endl;
 
-		ANSICHAR ch[10] = "Hello";
-		std::cout << ch << std::endl;
+		ANSICHAR        str1[10] = "Hello?";
+		const ANSICHAR* str2 = "World";
+		String::strcpy(str1, str2);
 
-		str.Reverse(ch);
-		std::cout << ch << std::endl;
-
-		String str2 = "Hello";
-		String str3 = "Yellow";
+		std::cout << str1 << std::endl;
+		const ANSICHAR* temp = name1.c_str();
+		std::cout << temp << std::endl;
 	}
 
 	{
 
 		// Vector2 pos;
+	}
+
+	{
+		// Array
+		TArray<int32> intAry;
+		intAry.Add(32);
 	}
 
 	return 0;
