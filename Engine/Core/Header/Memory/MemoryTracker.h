@@ -44,6 +44,10 @@ void CheckMemoryLeak();
 
 #include <iostream>
 
+// TODO(26-09-30):
+// MemoryTracker.cpp 에 구현하였을 때
+// Link 에러가 발생하는 이유 찾아보기
+
 inline void CheckMemoryLeak()
 {
 	for (int32 i = 0; i < sAllocIndex; ++i)
