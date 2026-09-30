@@ -4,6 +4,8 @@
 
 #include "../../Header/CoreTypes.h"
 
+const int32 DEFAULT_STRING_CAPACITY = 255;
+
 namespace bomsagwa
 {
 class String
