@@ -7,29 +7,35 @@ namespace memorytracker
 {
 const int32 DEFAULT_SIZE = 255;
 }
-
 using namespace memorytracker;
 
-static void* sPtrTable[DEFAULT_SIZE] = {};
+namespace bomsagwa
+{
+class MemoryTracker
+{
+public:
+	MemoryTracker();
+	~MemoryTracker();
 
-static uint32 sAllocIndex = 0;
-static uint32 sDeAllocIndex = 0;
+	template <typename T>
+	static void RecordAllocation(const T& typeInfo);
+	template <typename T>
+	static void RecordDeAllocation(const T& typeInfo);
+
+private:
+	static void*  sPtrTable[DEFAULT_SIZE];
+	static uint32 sAllocIndex;
+};
 
 template <typename T>
-static void RecordAllocation(const T& typeInfo);
-
-template <typename T>
-inline void RecordAllocation(const T& typeInfo)
+inline void MemoryTracker::RecordAllocation(const T& typeInfo)
 {
 	sPtrTable[sAllocIndex] = typeInfo;
 	++sAllocIndex;
 }
 
 template <typename T>
-static void RecordDeAllocation(const T& typeInfo);
-
-template <typename T>
-inline void RecordDeAllocation(const T& typeInfo)
+inline void MemoryTracker::RecordDeAllocation(const T& typeInfo)
 {
 	for (int32 i = 0; i < sAllocIndex; ++i)
 	{
@@ -40,30 +46,22 @@ inline void RecordDeAllocation(const T& typeInfo)
 	}
 }
 
-void CheckMemoryLeak();
+} // namespace bomsagwa
 
-#include <iostream>
+/*
+ * TODO(26-10-01):
+ * PTR은 사용자가 실수할 여지가 많으므로, 직접적으로 포인터를 받지 않고도
+ * 동적할당을 추적하는 방안 생각해보기
+ */
 
-// TODO(26-09-30):
-// MemoryTracker.cpp 에 구현하였을 때
-// Link 에러가 발생하는 이유 찾아보기
+#define DECL_NEW(TYPE, ALLOC_SIZE, PTR_NAME) \
+	TYPE* PTR_NAME = new TYPE[ALLOC_SIZE];   \
+	MemoryTracker::RecordAllocation(PTR_NAME);
 
-inline void CheckMemoryLeak()
-{
-	for (int32 i = 0; i < sAllocIndex; ++i)
-	{
-		if (sPtrTable[i] != nullptr)
-		{
-			// 누수 발생
-			std::cout << "메모리 누수 발생, " << "사이즈: " << sizeof(sPtrTable[i]) << std::endl;
-		}
-	}
-}
+#define ASSIGN_NEW(TYPE, ALLOC_SIZE, PTR_NAME) \
+	PTR_NAME = new TYPE[ALLOC_SIZE];           \
+	MemoryTracker::RecordAllocation(PTR_NAME);
 
-#define REC_NEW(TYPE, SIZE, PTR) \
-	= new TYPE[SIZE];            \
-	RecordAllocation(PTR);
-
-#define REC_DELETE(PTR)      \
-	RecordDeAllocation(PTR); \
-	delete[] PTR;
+#define DELETE(PTR_NAME)                         \
+	MemoryTracker::RecordDeAllocation(PTR_NAME); \
+	delete[] PTR_NAME;

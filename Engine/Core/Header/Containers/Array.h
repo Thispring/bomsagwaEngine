@@ -4,7 +4,11 @@
 #include "../CoreTypes.h"
 #include <iostream>
 
+namespace tarray
+{
 const int32 DEFAULT_ALLOC_SIZE = 4;
+}
+using namespace tarray;
 
 /*
  * templete 활용
@@ -19,6 +23,7 @@ public:
 	~TArray();
 	void Add(const T& data);
 	void Remove();
+	void Print();
 
 	T operator[](int32 pos) const;
 
@@ -45,9 +50,9 @@ inline void TArray<T>::Add(const T& data)
 {
 	if (mCapacity <= 0)
 	{
-		mData = new T;
-		*(mData + mIndex) = data;
 		mCapacity += sizeof(T) * DEFAULT_ALLOC_SIZE;
+		mData = new T[mCapacity];
+		*(mData + mIndex) = data;
 		mSize += sizeof(T);
 		++mIndex;
 	}
@@ -70,9 +75,6 @@ inline void TArray<T>::Add(const T& data)
 		++mIndex;
 		mSize += sizeof(T);
 	}
-
-	for (int i = 0; i < mIndex; ++i)
-		std::cout << "[Index: " << i << "]" << *(mData + i) << std::endl;
 }
 
 template <typename T>
@@ -81,9 +83,16 @@ inline void TArray<T>::Remove()
 }
 
 template <typename T>
+inline void TArray<T>::Print()
+{
+	for (int i = 0; i < mIndex; ++i)
+		std::cout << "[Index: " << i << "]" << *(mData + i) << std::endl;
+}
+
+template <typename T>
 inline T TArray<T>::operator[](int32 pos) const
 {
-	return T();
+	return mData[pos];
 }
 
 } // namespace bomsagwa

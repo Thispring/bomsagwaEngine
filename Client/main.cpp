@@ -8,6 +8,8 @@ using namespace bomsagwa;
 
 int main()
 {
+	MemoryTracker memTracker;
+
 	{
 		/*
 		 * 정수 문자열 변환
@@ -57,18 +59,37 @@ int main()
 		intAry.Add(256);
 		intAry.Add(512);
 		int32 a = 0;
-		// intAry[0];
+
+		// intAry.Print();
+		for (int32 i = 0; i < 6; ++i)
+			std::cout << intAry[i] << std::endl;
 	}
 
 	{
-		int32* ptr REC_NEW(int32, 1, ptr);
-		ptr[0] = 10;
-		std::cout << ptr[0] << std::endl;
-		REC_DELETE(ptr);
+		// DECL_NEW(int32, 1, ptr);
+		// ptr[0] = 10;
+		// std::cout << ptr[0] << std::endl;
+		// DELETE(ptr);
 
-		float* fptr REC_NEW(float, 2, ptr);
+		// int32* ptr2;
+		// ASSIGN_NEW(int32, 4, ptr2);
+		// ptr2[0] = 20;
+		// ptr2[1] = 30;
+		// ptr2[2] = 40;
+
+		// DECL_NEW(ANSICHAR, 10, cptr);
+		// for (int32 i = 0; i < sizeof(cptr); ++i)
+		// 	cptr[i] = 65 + i;
+
+		// for (int32 i = 0; i < sizeof(cptr); ++i)
+		// 	std::cout << cptr[i] << std::endl;
+
+		// DELETE(cptr);
+
+		// DECL_NEW(ANSICHAR, 30, cptr2);
+
+		// DECL_NEW(float, 2, fptr);
 	}
 
-	CheckMemoryLeak();
 	return 0;
 }
