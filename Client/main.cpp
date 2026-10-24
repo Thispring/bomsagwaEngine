@@ -1,7 +1,6 @@
 // Copyright Thispring Studio
 
 #include "../Engine/Core/Header/CoreSharedPCH.h"
-#include <iostream>
 #include <stdlib.h>
 
 using namespace bomsagwa;
@@ -9,6 +8,15 @@ using namespace bomsagwa;
 int main()
 {
 	MemoryTracker memTracker;
+
+	// Singleton<int32> single;
+	Singleton<int32>::GetInst();
+	Singleton<MemoryTracker>::GetInst();
+	Singleton<TimeSubsystem>::GetInst()->Temp();
+
+	// Singleton::NonStaticFunc();
+	//  TimeSubsystem time;
+	//    Singleton single;
 
 	{
 		/*
@@ -50,19 +58,19 @@ int main()
 	}
 
 	{
-		// Array
-		TArray<int32> intAry;
-		intAry.Add(16);
-		intAry.Add(32);
-		intAry.Add(64);
-		intAry.Add(128);
-		intAry.Add(256);
-		intAry.Add(512);
-		int32 a = 0;
+		// // Array
+		// TArray<int32> intAry;
+		// intAry.Add(16);
+		// intAry.Add(32);
+		// intAry.Add(64);
+		// intAry.Add(128);
+		// intAry.Add(256);
+		// intAry.Add(512);
+		// int32 a = 0;
 
-		// intAry.Print();
-		for (int32 i = 0; i < 6; ++i)
-			std::cout << intAry[i] << std::endl;
+		// // intAry.Print();
+		// for (int32 i = 0; i < 6; ++i)
+		// 	std::cout << intAry[i] << std::endl;
 	}
 
 	{

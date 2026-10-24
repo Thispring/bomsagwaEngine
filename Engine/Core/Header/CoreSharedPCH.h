@@ -8,4 +8,6 @@
 #include "Library/String.h"
 #include "Math/Vector2.h"
 #include "Memory/MemoryTracker.h"
+#include "Subsystem/Singleton.h"
+#include "Subsystem/TimeSubsystem.h"
 // IWYU pragma: end_exports
