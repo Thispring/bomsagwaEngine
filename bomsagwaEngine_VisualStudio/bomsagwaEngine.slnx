@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="bomsagwaEngine/bomsagwaEngine.vcxproj" Id="6a6d621e-0f73-40b7-9a59-b6cb948e8c85" />
+</Solution>

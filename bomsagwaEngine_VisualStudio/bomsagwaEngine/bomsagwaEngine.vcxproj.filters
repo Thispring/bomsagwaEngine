@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{81b3e861-942c-4dc3-849f-43b72027aa9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{059e418e-395a-4113-94f9-509fe51df326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Engine\Core\Header\Containers">
+      <UniqueIdentifier>{f73e8327-d39d-41f6-969e-f990649b1ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\FileSystem">
+      <UniqueIdentifier>{e3ef317b-2042-41df-a4cd-2a953679805c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\GenericPlatform">
+      <UniqueIdentifier>{2d13c745-6f45-4f9c-852e-2fcbbded79e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\Global">
+      <UniqueIdentifier>{f75f509c-4cef-4a50-b630-6b91420544cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\Library">
+      <UniqueIdentifier>{509cbe89-19b5-4651-88d5-4b2f525c90b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\Math">
+      <UniqueIdentifier>{f2f39524-58ec-43be-b6a0-136c86021a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Header\Subsystem">
+      <UniqueIdentifier>{def1d708-14f5-48fb-bfcc-6e0208c796b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Source">
+      <UniqueIdentifier>{f930e93d-2cc4-4eac-a127-71bcc2c620bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Source\FileSystem">
+      <UniqueIdentifier>{be79944d-e086-4cd7-bee9-84e46f2b4a8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Source\Library">
+      <UniqueIdentifier>{c6dada34-6efa-4d77-a3b5-722f6ce2c113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Source\Math">
+      <UniqueIdentifier>{90a80198-709e-4350-bc93-aa28aa56930c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core\Source\Memory">
+      <UniqueIdentifier>{d3b3a803-8c3f-4f60-9855-00642f056434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Engine\Core\Header\CoreSharedPCH.h">
+      <Filter>Engine\Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\CoreTypes.h">
+      <Filter>Engine\Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Containers\Array.h">
+      <Filter>Engine\Core\Header\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\FileSystem\FileManager.h">
+      <Filter>Engine\Core\Header\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\GenericPlatform\GenericPlatform.h">
+      <Filter>Engine\Core\Header\GenericPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Global\Constants.h">
+      <Filter>Engine\Core\Header\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Library\String.h">
+      <Filter>Engine\Core\Header\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Math\Vector2.h">
+      <Filter>Engine\Core\Header\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Subsystem\Singleton.h">
+      <Filter>Engine\Core\Header\Subsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Core\Header\Subsystem\TimeSubsystem.h">
+      <Filter>Engine\Core\Header\Subsystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Client\main.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Core\Source\FileSystem\FileManager.cpp">
+      <Filter>Engine\Core\Source\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Core\Source\Library\String.cpp">
+      <Filter>Engine\Core\Source\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Core\Source\Math\Vector2.cpp">
+      <Filter>Engine\Core\Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Core\Source\Memory\MemoryTracker.cpp">
+      <Filter>Engine\Core\Source\Memory</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
